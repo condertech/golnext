@@ -3,9 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade | GolNext",
+  title: "Política de Privacidade",
   description:
-    "Como o GolNext coleta, usa, armazena e protege seus dados pessoais, em conformidade com a LGPD.",
+    "Como o GolNext coleta, usa, armazena e protege seus dados pessoais, em conformidade com a LGPD (Lei nº 13.709/2018).",
+  alternates: {
+    canonical: "/politica-de-privacidade",
+  },
 };
 
 function Section({

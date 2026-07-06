@@ -1,9 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "GolNext",
+  description:
+    "Plataforma de reserva de quadras esportivas. Conecta jogadores e donos de quadra.",
+  url: process.env.URL || "https://golnext.netlify.app",
+  logo: `${process.env.URL || "https://golnext.netlify.app"}/golnext-icon.png`,
+  email: "suporte@golnext.com",
+  areaServed: "BR",
+};
+
 export default function Home() {
   return (
     <main className="flex-1 flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <header className="bg-petroleo-900 rounded-b-3xl">
         <div className="mx-auto max-w-5xl px-6 py-24 text-center">
           <Image
