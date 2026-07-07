@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Wordmark } from "./Navbar";
 
 export function Footer() {
   return (
@@ -7,7 +7,13 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-5 md:px-10 pt-16 pb-10">
         <div className="grid gap-10 md:grid-cols-[2fr_1fr_1fr_1fr]">
           <div>
-            <Wordmark />
+            <Image
+              src="/golnext-logo-light.png"
+              alt="GolNext"
+              width={150}
+              height={27}
+              className="h-7 w-auto"
+            />
             <p className="mt-4 max-w-[280px] text-sm leading-relaxed">
               A plataforma que conecta jogadores à sua próxima partida.
               Reserve. Jogue. Repita.

@@ -323,7 +323,8 @@ export default function Home() {
             <div className="text-center">
               <Eyebrow>Demonstração</Eyebrow>
               <h2 className="wm mx-auto mt-3 max-w-2xl text-[clamp(34px,5vw,58px)] text-ink">
-                O GolNext na palma da mão.
+                O Gol<span className="text-petroleo-700">Next</span> na palma da
+                mão.
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-ink-soft">
                 Uma prévia do app: buscar quadra, reservar em segundos e, para
@@ -635,8 +636,10 @@ export default function Home() {
               O próximo horário pode ser seu.
             </h2>
             <p className="mx-auto mt-5 max-w-[620px] text-lg leading-relaxed text-deep-soft">
-              Entre na lista da GolNext para reservar quadras, cadastrar sua
-              arena ou acompanhar o lançamento na sua cidade.
+              Entre na lista da{" "}
+              <span className="wm text-deep">GolNext</span> para reservar
+              quadras, cadastrar sua arena ou acompanhar o lançamento na sua
+              cidade.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3.5">
               <a
