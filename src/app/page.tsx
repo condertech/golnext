@@ -387,6 +387,83 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="cameras" className="scroll-mt-24 bg-deep px-5 py-22 text-petroleo-50 md:px-10">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
+            <div>
+              <Eyebrow dark>Recurso opcional</Eyebrow>
+              <h2 className="wm mt-3 text-[clamp(34px,5vw,58px)] text-white">
+                Grave suas partidas em vídeo.
+              </h2>
+              <p className="mt-5 max-w-md leading-relaxed text-mist">
+                Quadras equipadas com o sistema de câmeras da GolNext gravam o
+                jogo inteiro. O jogador revê os lances, salva os melhores
+                momentos e compartilha o golaço, tudo pelo app.
+              </p>
+              <ul className="mt-7 space-y-4">
+                {[
+                  [
+                    "Gravação automática",
+                    "Começa e termina junto com a sua reserva, sem ninguém apertar nada.",
+                  ],
+                  [
+                    "Melhores momentos",
+                    "Cortes dos gols e jogadas prontos para baixar e compartilhar.",
+                  ],
+                  [
+                    "Ativação sob demanda",
+                    "A arena liga as câmeras quando quiser. Para o jogador, é só um extra na reserva.",
+                  ],
+                ].map(([titulo, texto]) => (
+                  <li key={titulo} className="flex gap-3">
+                    <span className="mt-0.5 shrink-0 text-mint">
+                      <CheckIcon />
+                    </span>
+                    <span>
+                      <span className="wm block text-lg text-white">{titulo}</span>
+                      <span className="mt-1 block text-sm leading-relaxed text-sage">
+                        {texto}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              className="relative overflow-hidden rounded-3xl border border-white/10 bg-deepest shadow-[0_30px_70px_rgba(0,0,0,0.35)]"
+              aria-hidden="true"
+            >
+              <div className="relative aspect-video bg-gradient-to-br from-petroleo-800 to-deepest">
+                <div className="absolute inset-0 opacity-25">
+                  <svg viewBox="0 0 400 225" className="h-full w-full text-mint">
+                    <rect x="18" y="18" width="364" height="189" rx="8" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <line x1="200" y1="18" x2="200" y2="207" stroke="currentColor" strokeWidth="2" />
+                    <circle cx="200" cy="112" r="34" fill="none" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                </div>
+                <span className="sg absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/45 px-3 py-1.5 text-[11px] font-semibold text-white">
+                  <span className="h-2 w-2 rounded-full bg-red-500" />
+                  REC
+                </span>
+                <span className="sg absolute right-4 top-4 rounded-full bg-black/45 px-3 py-1.5 text-[11px] font-semibold text-white">
+                  Arena Central · 19:32
+                </span>
+                <div className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-mint text-deep">
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 px-5 py-4">
+                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/15">
+                  <div className="h-full w-2/3 rounded-full bg-mint" />
+                </div>
+                <span className="sg text-xs text-sage">02:14 / 03:30</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="comece" className="scroll-mt-24 bg-mint px-5 py-22 md:px-10">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="wm text-[clamp(38px,6vw,68px)] text-deep">
