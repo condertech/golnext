@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #e0f2f1;
   --foreground: #0c2c27;
 }
 
@@ -12,9 +12,17 @@
   --color-petroleo-800: #00695c;
   --color-petroleo-700: #00796b;
   --color-petroleo-500: #009688;
+  --color-petroleo-400: #26a69a;
+  --color-petroleo-300: #4db6ac;
   --color-petroleo-100: #b2dfdb;
   --color-petroleo-50: #e0f2f1;
   --color-mint: #1de9b6;
+  --color-deep: #00352c;
+  --color-deepest: #001f19;
+  --color-deep-soft: #00473b;
+  --color-mist: #b9d9d4;
+  --color-sage: #7fb3ab;
+  --color-pale: #c5e4e0;
   --color-ink: #0c2c27;
   --color-ink-soft: #3b5751;
   --color-ink-muted: #5c7a74;
@@ -26,4 +34,39 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #1de9b6;
+  color: #00352c;
+}
+
+.wm {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.sg {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+@keyframes gnfloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.gn-float {
+  animation: gnfloat 6s ease-in-out infinite;
 }

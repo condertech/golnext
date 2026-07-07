@@ -3,145 +3,355 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Anuncie sua quadra e lote sua agenda",
+  title: "Lote a agenda da sua quadra",
   description:
-    "Cadastre sua quadra esportiva no GolNext: agenda em tempo real, pagamentos automáticos via Mercado Pago, relatórios de receita e divulgação para jogadores da sua região.",
+    "Coloque sua arena no app da GolNext, receba reservas 24h por dia com pagamento antecipado e acabe com o horário ocioso. Sem mensalidade pra começar.",
   alternates: { canonical: "/para-donos-de-quadra" },
 };
 
-const beneficios = [
+const passos = [
   {
-    titulo: "Agenda sem conflito",
+    numero: "01",
+    titulo: "Cadastre a arena",
     texto:
-      "Horários livres e reservados atualizados em tempo real. Bloqueie horários para manutenção ou eventos quando precisar.",
+      "Adicione fotos, esportes, quadras e preços. Leva menos de 10 minutos.",
   },
   {
-    titulo: "Receba sem correr atrás",
+    numero: "02",
+    titulo: "Defina a agenda",
     texto:
-      "O jogador paga pelo app na hora da reserva, via Pix ou cartão, com processamento do Mercado Pago.",
+      "Configure horários, valores por período e regras de cancelamento.",
   },
   {
-    titulo: "Faturamento na palma da mão",
+    numero: "03",
+    titulo: "Receba e fature",
     texto:
-      "Painel com receita do mês, reservas do dia, taxa de ocupação e histórico completo.",
-  },
-  {
-    titulo: "Divulgação automática",
-    texto:
-      "Sua quadra aparece para todos os jogadores da região que buscam horário. Fotos, comodidades e avaliações à vista.",
-  },
-  {
-    titulo: "Lanchonete integrada",
-    texto:
-      "Cadastre o cardápio da sua lanchonete e venda para quem já está na quadra.",
-  },
-  {
-    titulo: "Sem mensalidade para começar",
-    texto:
-      "Cadastre sua quadra gratuitamente. Você só participa quando as reservas acontecem.",
+      "Reservas caem direto na agenda com pagamento antecipado. O repasse é automático.",
   },
 ];
 
-const passos = [
+const recursos = [
   {
-    numero: "1",
-    titulo: "Cadastre-se no app",
-    texto: "Crie sua conta gratuita com email e telefone.",
+    titulo: "Agenda inteligente",
+    texto:
+      "Múltiplas quadras, bloqueios e reservas recorrentes num calendário só.",
   },
   {
-    numero: "2",
-    titulo: "Anuncie sua quadra",
+    titulo: "Relatórios de receita",
     texto:
-      "Adicione fotos, endereço, preço por hora, comodidades e horários de funcionamento.",
+      "Acompanhe faturamento, ocupação e horários de pico em tempo real.",
   },
   {
-    numero: "3",
-    titulo: "Aprovação e publicação",
+    titulo: "Pagamento antecipado",
     texto:
-      "Nossa equipe revisa o anúncio e sua quadra entra no ar para jogadores da região.",
+      "O jogador paga na reserva. Você recebe via Pix, sem calote nem no-show.",
   },
   {
-    numero: "4",
-    titulo: "Gerencie e fature",
+    titulo: "Preço dinâmico",
     texto:
-      "Acompanhe reservas e receita pelo painel do proprietário, em tempo real.",
+      "Cobre mais nos horários de pico e preencha os vazios com promoções.",
+  },
+  {
+    titulo: "Mais visibilidade",
+    texto:
+      "Apareça pra milhares de jogadores buscando quadra perto de você.",
+  },
+  {
+    titulo: "Sedie campeonatos",
+    texto:
+      "Hospede torneios da GolNext e atraia novos jogadores para a arena.",
   },
 ];
+
+function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+  return (
+    <div
+      className={`sg text-[13px] font-semibold uppercase tracking-[0.14em] ${
+        dark ? "text-mint" : "text-petroleo-700"
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1DE9B6" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+function PainelMock() {
+  return (
+    <div className="rounded-3xl bg-white p-7 shadow-[0_30px_70px_rgba(0,0,0,0.3)]" aria-hidden="true">
+      <div className="flex items-center justify-between">
+        <span className="wm text-lg text-ink">
+          Painel <span className="text-petroleo-700">Arena</span>
+        </span>
+        <span className="sg rounded-full bg-pale px-3 py-1 text-[11px] font-semibold text-ink-soft">
+          Hoje
+        </span>
+      </div>
+      <div className="sg mt-5 text-xs uppercase tracking-widest text-ink-muted">
+        Faturamento do mês
+      </div>
+      <div className="wm mt-1 text-[40px] text-petroleo-700">+R$ 18.400</div>
+      <div className="mt-5 space-y-3">
+        {[
+          ["19:00 · Quadra 1", "Reservada", true],
+          ["20:00 · Quadra 2", "Reservada", true],
+          ["21:00 · Quadra 1", "Livre", false],
+        ].map(([hora, status, on]) => (
+          <div
+            key={hora as string}
+            className="flex items-center justify-between rounded-xl border border-pale px-4 py-3"
+          >
+            <span className="sg text-sm text-ink-soft">{hora}</span>
+            <span
+              className={`sg rounded-full px-3 py-1 text-[11px] font-semibold ${
+                on ? "bg-mint/20 text-petroleo-700" : "bg-pale text-ink-muted"
+              }`}
+            >
+              {status}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function ParaDonosDeQuadra() {
   return (
     <>
-      <Navbar />
+      <Navbar active="donos" />
       <main className="flex-1">
-        <header className="bg-petroleo-900">
-          <div className="mx-auto max-w-3xl px-6 py-16">
-            <h1 className="font-[family-name:var(--font-space-grotesk)] text-3xl md:text-4xl font-bold text-white">
-              Sua quadra cheia, <span className="text-mint">sem dor de cabeça</span>
-            </h1>
-            <p className="mt-4 text-petroleo-100 text-lg">
-              A GolNext cuida da agenda, dos pagamentos e da divulgação. Você
-              cuida do jogo.
-            </p>
-          </div>
-        </header>
-
-        <section className="mx-auto max-w-6xl px-6 py-16">
-          <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold text-petroleo-900 text-center">
-            Por que anunciar na GolNext
-          </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {beneficios.map((b) => (
-              <div
-                key={b.titulo}
-                className="rounded-2xl border border-petroleo-50 p-6"
-              >
-                <span className="text-petroleo-500 font-bold">✓</span>
-                <h3 className="mt-2 font-semibold text-ink">{b.titulo}</h3>
-                <p className="mt-2 text-sm text-ink-soft leading-relaxed">
-                  {b.texto}
-                </p>
+        <section className="relative overflow-hidden bg-petroleo-900 text-petroleo-50">
+          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-24 pt-20 md:grid-cols-2 md:px-10">
+            <div>
+              <h1 className="wm text-[clamp(42px,6vw,72px)] text-white">
+                Lote a agenda
+                <br />
+                da sua <span className="text-mint">quadra.</span>
+              </h1>
+              <p className="mt-6 max-w-[480px] text-lg leading-relaxed text-mist">
+                Coloque sua arena no app da GolNext, receba reservas 24h por
+                dia com pagamento antecipado e acabe com o horário ocioso.
+              </p>
+              <div className="mt-9 flex flex-wrap gap-3.5">
+                <a
+                  href="mailto:suporte@golnext.com?subject=Quero%20cadastrar%20minha%20arena"
+                  className="wm rounded-full bg-mint px-8 py-4 text-lg text-deep hover:brightness-95 transition"
+                >
+                  Cadastrar minha arena
+                </a>
+                <a
+                  href="#planos"
+                  className="sg rounded-full border border-white/30 px-7 py-4 font-semibold text-white hover:bg-white/10 transition"
+                >
+                  Ver planos
+                </a>
               </div>
-            ))}
+              <div className="mt-11 flex flex-wrap gap-8">
+                {[
+                  ["+38%", "ocupação média"],
+                  ["24h", "recebendo reservas"],
+                  ["0", "mensalidade inicial"],
+                ].map(([n, l]) => (
+                  <div key={l}>
+                    <div className="wm text-[34px] text-mint">{n}</div>
+                    <div className="sg mt-0.5 text-[13px] text-sage">{l}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <PainelMock />
           </div>
         </section>
 
-        <section className="bg-petroleo-50/50">
-          <div className="mx-auto max-w-3xl px-6 py-16">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold text-petroleo-900 text-center">
-              Comece em 4 passos
+        <section className="bg-deep px-5 py-7 text-sage md:px-10">
+          <div className="sg mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+            <span className="text-white">Você recebe</span>
+            <span>
+              <strong className="text-mint">Pagamento antecipado</strong>
+            </span>
+            <span aria-hidden="true">·</span>
+            <span>Repasse via Pix</span>
+            <span aria-hidden="true">·</span>
+            <span>Zero no-show</span>
+            <span aria-hidden="true">·</span>
+            <span>Suporte dedicado</span>
+          </div>
+        </section>
+
+        <section id="como" className="scroll-mt-20 bg-petroleo-50 px-5 py-24 md:px-10">
+          <div className="mx-auto max-w-6xl">
+            <Eyebrow>Como funciona</Eyebrow>
+            <h2 className="wm mt-3 text-[clamp(32px,4.5vw,52px)] text-ink">
+              Da inscrição à primeira reserva
             </h2>
-            <div className="mt-12 space-y-8">
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
               {passos.map((p) => (
-                <article key={p.numero} className="flex gap-6">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-petroleo-900 font-[family-name:var(--font-space-grotesk)] text-lg font-bold text-mint">
-                    {p.numero}
-                  </div>
-                  <div>
-                    <h3 className="font-[family-name:var(--font-space-grotesk)] text-lg font-bold text-ink">
-                      {p.titulo}
-                    </h3>
-                    <p className="mt-2 text-ink-soft">{p.texto}</p>
-                  </div>
-                </article>
+                <div
+                  key={p.numero}
+                  className="rounded-3xl bg-white p-8 shadow-[0_10px_30px_rgba(0,53,44,0.06)]"
+                >
+                  <div className="wm text-[42px] text-pale">{p.numero}</div>
+                  <h3 className="wm mt-3 text-2xl text-ink">{p.titulo}</h3>
+                  <p className="mt-3 leading-relaxed text-ink-soft">{p.texto}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-6 py-20">
-          <div className="rounded-3xl bg-petroleo-900 px-8 py-14 text-center">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold text-white">
-              Quer conversar antes? <span className="text-mint">Fale com a gente.</span>
+        <section id="recursos" className="scroll-mt-20 bg-white px-5 py-24 md:px-10">
+          <div className="mx-auto max-w-6xl">
+            <Eyebrow>Recursos para arenas</Eyebrow>
+            <h2 className="wm mt-3 text-[clamp(32px,4.5vw,52px)] text-ink">
+              Gestão completa num painel só
             </h2>
-            <p className="mt-4 text-petroleo-100">
-              Nossa equipe ajuda você a colocar sua quadra no ar.
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {recursos.map((r) => (
+                <div
+                  key={r.titulo}
+                  className="rounded-3xl border border-pale bg-petroleo-50/60 p-7 transition hover:border-petroleo-300"
+                >
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#00796B" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  <h3 className="wm mt-4 text-xl text-ink">{r.titulo}</h3>
+                  <p className="mt-2.5 text-[15px] leading-relaxed text-ink-soft">
+                    {r.texto}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="planos" className="scroll-mt-20 bg-petroleo-900 px-5 py-24 text-petroleo-50 md:px-10">
+          <div className="mx-auto max-w-6xl">
+            <Eyebrow dark>Planos</Eyebrow>
+            <h2 className="wm mt-3 text-[clamp(32px,4.5vw,52px)] text-white">
+              Comece de graça, cresça sem limite
+            </h2>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+                <div className="wm text-[22px] text-white">Start</div>
+                <div className="wm mt-3.5 text-[46px] text-mint">Grátis</div>
+                <p className="sg mt-1.5 text-[13px] text-sage">
+                  Só uma pequena taxa por reserva concluída.
+                </p>
+                <ul className="mt-6 space-y-3 text-sm text-mist">
+                  {["1 quadra", "Agenda e pagamentos", "Relatórios básicos"].map(
+                    (t) => (
+                      <li key={t} className="flex items-center gap-2.5">
+                        <CheckIcon />
+                        {t}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+              <div className="relative rounded-3xl bg-mint p-8 text-deep">
+                <span className="sg absolute right-5 top-5 rounded-full bg-deep px-3 py-1 text-[11px] font-semibold text-mint">
+                  Popular
+                </span>
+                <div className="wm text-[22px]">Pro</div>
+                <div className="mt-3.5">
+                  <span className="wm text-[46px]">R$149</span>
+                  <span className="sg text-sm text-deep-soft">/mês</span>
+                </div>
+                <p className="sg mt-1.5 text-[13px] text-deep-soft">
+                  Taxa reduzida por reserva. Ideal para arenas movimentadas.
+                </p>
+                <ul className="mt-6 space-y-3 text-sm font-medium">
+                  {[
+                    "Quadras ilimitadas",
+                    "Preço dinâmico",
+                    "Destaque na busca",
+                    "Campeonatos",
+                  ].map((t) => (
+                    <li key={t} className="flex items-center gap-2.5">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#00352C" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+                <div className="wm text-[22px] text-white">Rede</div>
+                <div className="wm mt-3.5 text-[46px] text-mint">Sob medida</div>
+                <p className="sg mt-1.5 text-[13px] text-sage">
+                  Para franquias e redes com várias unidades.
+                </p>
+                <ul className="mt-6 space-y-3 text-sm text-mist">
+                  {[
+                    "Multiunidades",
+                    "Dashboard avançado",
+                    "Integrações e API",
+                  ].map((t) => (
+                    <li key={t} className="flex items-center gap-2.5">
+                      <CheckIcon />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-petroleo-50 px-5 py-24 md:px-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="text-mint" aria-hidden="true">★★★★★</div>
+            <blockquote className="wm mt-6 text-[clamp(22px,3vw,32px)] leading-snug text-ink">
+              “Coloquei minhas 3 quadras na GolNext e em dois meses a ocupação
+              nos fins de semana bateu 100%. O painel é simples e o dinheiro
+              cai certinho.”
+            </blockquote>
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <span className="wm flex h-12 w-12 items-center justify-center rounded-full bg-petroleo-900 text-mint">
+                Z
+              </span>
+              <span className="text-left">
+                <span className="block font-bold text-ink">José Almeida</span>
+                <span className="sg block text-xs text-ink-muted">
+                  Dono da Arena do Zé · São Paulo
+                </span>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section id="baixar" className="scroll-mt-20 bg-mint px-5 py-24 md:px-10">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="wm text-[clamp(38px,6vw,68px)] text-deep">
+              Cadastre sua arena hoje.
+            </h2>
+            <p className="mx-auto mt-5 max-w-[520px] text-lg text-deep-soft">
+              Sem mensalidade pra começar. Coloque sua quadra no ar e receba a
+              primeira reserva ainda esta semana.
             </p>
-            <a
-              href="mailto:suporte@golnext.com?subject=Quero%20anunciar%20minha%20quadra"
-              className="mt-8 inline-block rounded-xl bg-mint px-8 py-4 font-bold text-petroleo-900 hover:brightness-95 transition"
-            >
-              suporte@golnext.com
-            </a>
+            <div className="mt-9 flex flex-wrap justify-center gap-3.5">
+              <a
+                href="mailto:suporte@golnext.com?subject=Quero%20cadastrar%20minha%20arena"
+                className="wm rounded-full bg-deep px-8 py-4 text-lg text-white hover:bg-deepest transition"
+              >
+                Quero cadastrar minha arena
+              </a>
+              <a
+                href="mailto:suporte@golnext.com?subject=Falar%20com%20um%20consultor"
+                className="sg rounded-full border-2 border-deep px-7 py-4 font-semibold text-deep hover:bg-deep hover:text-white transition"
+              >
+                Falar com um consultor
+              </a>
+            </div>
           </div>
         </section>
       </main>

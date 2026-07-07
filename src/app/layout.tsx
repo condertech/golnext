@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Space_Grotesk } from "next/font/google";
+import { Manrope, Space_Grotesk, Archivo } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -12,6 +12,13 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-archivo",
+});
+
 const siteUrl = process.env.URL || "https://golnext.netlify.app";
 
 export const metadata: Metadata = {
@@ -21,13 +28,15 @@ export const metadata: Metadata = {
     template: "%s | GolNext",
   },
   description:
-    "Reserve quadras de futebol society, futsal e beach tennis perto de você em segundos. A GolNext conecta jogadores e donos de quadra numa experiência rápida e sem burocracia.",
+    "Encontre a quadra, veja horários livres e reserve em 30 segundos. Futebol, beach tennis, vôlei e muito mais, tudo num app só.",
   keywords: [
     "reserva de quadras",
     "alugar quadra",
     "quadra society",
     "futsal",
     "beach tennis",
+    "vôlei",
+    "padel",
     "agendamento de quadras",
     "quadras esportivas",
     "GolNext",
@@ -45,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "GolNext",
     title: "GolNext | Reserva de Quadras Esportivas",
     description:
-      "Menos burocracia, mais jogo. Reserve quadras perto de você em segundos. Reserve. Jogue. Repita.",
+      "Sua próxima partida começa aqui. Encontre a quadra, veja horários livres e reserve em 30 segundos.",
     images: [
       {
         url: "/golnext-icon.png",
@@ -59,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GolNext | Reserva de Quadras Esportivas",
     description:
-      "Menos burocracia, mais jogo. Reserve quadras perto de você em segundos.",
+      "Sua próxima partida começa aqui. Reserve quadras em 30 segundos.",
     images: ["/golnext-icon.png"],
   },
   robots: {
@@ -83,7 +92,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${manrope.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${manrope.variable} ${spaceGrotesk.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

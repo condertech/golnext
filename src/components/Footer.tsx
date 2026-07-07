@@ -1,78 +1,64 @@
-import Image from "next/image";
 import Link from "next/link";
+import { Wordmark } from "./Navbar";
 
 export function Footer() {
   return (
-    <footer className="bg-petroleo-900 mt-auto">
-      <div className="mx-auto max-w-6xl px-6 py-14 grid gap-10 md:grid-cols-4">
-        <div>
-          <Image
-            src="/golnext-logo.png"
-            alt="GolNext"
-            width={150}
-            height={23}
-            className="brightness-0 invert"
-          />
-          <p className="mt-4 text-sm text-petroleo-100 leading-relaxed">
-            A plataforma que conecta jogadores à sua próxima partida. Reserve.
-            Jogue. Repita.
-          </p>
-        </div>
-        <div>
-          <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-            Produto
-          </h3>
-          <ul className="space-y-2 text-sm text-petroleo-100">
-            <li>
+    <footer className="bg-deep text-sage mt-auto">
+      <div className="mx-auto max-w-6xl px-5 md:px-10 pt-16 pb-10">
+        <div className="grid gap-10 md:grid-cols-[2fr_1fr_1fr_1fr]">
+          <div>
+            <Wordmark />
+            <p className="mt-4 max-w-[280px] text-sm leading-relaxed">
+              A plataforma que conecta jogadores à sua próxima partida.
+              Reserve. Jogue. Repita.
+            </p>
+          </div>
+          <div>
+            <div className="sg mb-3.5 text-xs uppercase tracking-widest text-white">
+              Produto
+            </div>
+            <div className="flex flex-col gap-2.5 text-sm">
               <Link href="/como-funciona" className="hover:text-mint">
                 Como funciona
               </Link>
-            </li>
-            <li>
-              <Link href="/para-donos-de-quadra" className="hover:text-mint">
-                Para donos de quadra
+              <Link href="/#recursos" className="hover:text-mint">
+                Recursos
               </Link>
-            </li>
-            <li>
               <Link href="/faq" className="hover:text-mint">
                 Perguntas frequentes
               </Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-            Legal
-          </h3>
-          <ul className="space-y-2 text-sm text-petroleo-100">
-            <li>
-              <Link href="/politica-de-privacidade" className="hover:text-mint">
-                Política de Privacidade
+            </div>
+          </div>
+          <div>
+            <div className="sg mb-3.5 text-xs uppercase tracking-widest text-white">
+              Empresa
+            </div>
+            <div className="flex flex-col gap-2.5 text-sm">
+              <Link href="/para-donos-de-quadra" className="hover:text-mint">
+                Para arenas
               </Link>
-            </li>
-            <li>
-              <Link href="/termos-de-uso" className="hover:text-mint">
-                Termos de Uso
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-            Suporte
-          </h3>
-          <ul className="space-y-2 text-sm text-petroleo-100">
-            <li>
               <a href="mailto:suporte@golnext.com" className="hover:text-mint">
-                suporte@golnext.com
+                Contato
               </a>
-            </li>
-          </ul>
+            </div>
+          </div>
+          <div>
+            <div className="sg mb-3.5 text-xs uppercase tracking-widest text-white">
+              Legal
+            </div>
+            <div className="flex flex-col gap-2.5 text-sm">
+              <Link href="/termos-de-uso" className="hover:text-mint">
+                Termos
+              </Link>
+              <Link href="/politica-de-privacidade" className="hover:text-mint">
+                Privacidade
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="border-t border-petroleo-800">
-        <div className="mx-auto max-w-6xl px-6 py-6 text-center text-xs text-petroleo-100">
-          © {new Date().getFullYear()} GolNext. Todos os direitos reservados.
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs sm:flex-row sm:justify-between">
+          <span>© {new Date().getFullYear()} GolNext. Todos os direitos reservados.</span>
+          <span>Feito para quem só quer jogar.</span>
         </div>
       </div>
     </footer>
