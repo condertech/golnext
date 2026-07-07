@@ -121,7 +121,7 @@ export default function ParaDonosDeQuadra() {
       <Navbar />
       <main className="flex-1">
         <section className="relative overflow-hidden bg-petroleo-900 text-petroleo-50">
-          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-24 pt-20 md:grid-cols-2 md:px-10">
+          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-12 md:grid-cols-2 md:px-10 md:pb-24 md:pt-20">
             <div>
               <h1 className="wm text-[clamp(42px,6vw,72px)] text-white">
                 Lote a agenda
@@ -178,7 +178,7 @@ export default function ParaDonosDeQuadra() {
           </div>
         </section>
 
-        <section id="como" className="scroll-mt-20 bg-petroleo-50 px-5 py-24 md:px-10">
+        <section id="como" className="scroll-mt-20 bg-petroleo-50 px-5 py-16 md:px-10 md:py-24">
           <div className="mx-auto max-w-6xl">
             <Eyebrow>Como funciona</Eyebrow>
             <h2 className="wm mt-3 text-[clamp(32px,4.5vw,52px)] text-ink">
@@ -199,7 +199,7 @@ export default function ParaDonosDeQuadra() {
           </div>
         </section>
 
-        <section id="recursos" className="scroll-mt-20 bg-white px-5 py-24 md:px-10">
+        <section id="recursos" className="scroll-mt-20 bg-white px-5 py-16 md:px-10 md:py-24">
           <div className="mx-auto max-w-6xl">
             <Eyebrow>Recursos para arenas</Eyebrow>
             <h2 className="wm mt-3 text-[clamp(32px,4.5vw,52px)] text-ink">
@@ -224,7 +224,7 @@ export default function ParaDonosDeQuadra() {
           </div>
         </section>
 
-        <section className="bg-petroleo-50 px-5 py-24 md:px-10">
+        <section className="bg-petroleo-50 px-5 py-16 md:px-10 md:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <div className="text-mint" aria-hidden="true">★★★★★</div>
             <blockquote className="wm mt-6 text-[clamp(22px,3vw,32px)] leading-snug text-ink">
@@ -246,7 +246,7 @@ export default function ParaDonosDeQuadra() {
           </div>
         </section>
 
-        <section id="baixar" className="scroll-mt-20 bg-mint px-5 py-24 md:px-10">
+        <section id="baixar" className="scroll-mt-20 bg-mint px-5 py-16 md:px-10 md:py-24">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="wm text-[clamp(38px,6vw,68px)] text-deep">
               Cadastre sua arena hoje.
