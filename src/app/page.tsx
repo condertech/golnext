@@ -185,20 +185,19 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
 
-        <section className="relative min-h-[600px] overflow-hidden bg-deepest text-white md:min-h-[760px]">
+        <section className="relative min-h-[760px] overflow-hidden bg-deepest text-white">
           <Image
             src="/golnext-hero-players.png"
             alt="Jogadores comemorando em uma quadra esportiva"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[68%_center] md:object-center"
+            className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,31,25,0.96)_0%,rgba(0,53,44,0.86)_34%,rgba(0,53,44,0.38)_68%,rgba(0,31,25,0.16)_100%)]" />
-          <div className="absolute inset-0 bg-deepest/45 md:hidden" />
           <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-deepest to-transparent" />
           <FieldAccent />
-          <div className="relative mx-auto flex min-h-[600px] max-w-6xl items-center px-5 py-16 md:min-h-[760px] md:px-10 md:py-20">
+          <div className="relative mx-auto flex min-h-[760px] max-w-6xl items-center px-5 py-20 md:px-10">
             <div className="max-w-[620px]">
               <div className="sg inline-flex items-center gap-2 rounded-full border border-mint/35 bg-mint/15 px-4 py-2 text-[13px] tracking-wide text-mint">
                 <span className="inline-block h-[7px] w-[7px] rounded-full bg-mint" />
@@ -246,7 +245,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="esportes" className="scroll-mt-24 bg-petroleo-50 px-5 py-16 md:px-10 md:py-20">
+        <section id="esportes" className="scroll-mt-24 bg-petroleo-50 px-5 py-20 md:px-10">
           <div className="mx-auto max-w-6xl">
             <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
               <div>
@@ -279,7 +278,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="como" className="scroll-mt-24 bg-white px-5 py-16 md:px-10 md:py-22">
+        <section id="como" className="scroll-mt-24 bg-white px-5 py-22 md:px-10">
           <div className="mx-auto max-w-6xl">
             <Eyebrow>Como funciona</Eyebrow>
             <h2 className="wm mt-3 text-[clamp(34px,5vw,58px)] text-ink">
@@ -300,7 +299,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="recursos" className="scroll-mt-24 bg-deep px-5 py-16 text-petroleo-50 md:px-10 md:py-22">
+        <section id="recursos" className="scroll-mt-24 bg-deep px-5 py-22 text-petroleo-50 md:px-10">
           <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
             <div>
               <Eyebrow dark>Para jogadores e arenas</Eyebrow>
@@ -326,7 +325,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-petroleo-50 px-5 py-16 md:px-10 md:py-22">
+        <section className="bg-petroleo-50 px-5 py-22 md:px-10">
           <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
             <div className="overflow-hidden rounded-2xl bg-white shadow-[0_16px_36px_rgba(0,53,44,0.07)]">
               <div className="relative h-56">
@@ -393,7 +392,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="comece" className="scroll-mt-24 bg-mint px-5 py-16 md:px-10 md:py-22">
+        <section id="comece" className="scroll-mt-24 bg-mint px-5 py-22 md:px-10">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="wm text-[clamp(38px,6vw,68px)] text-deep">
               O próximo horário pode ser seu.
