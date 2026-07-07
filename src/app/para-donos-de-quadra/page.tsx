@@ -75,14 +75,6 @@ function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?:
   );
 }
 
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1DE9B6" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
-
 function PainelMock() {
   return (
     <div className="rounded-3xl bg-white p-7 shadow-[0_30px_70px_rgba(0,0,0,0.3)]" aria-hidden="true">
@@ -126,7 +118,7 @@ function PainelMock() {
 export default function ParaDonosDeQuadra() {
   return (
     <>
-      <Navbar active="donos" />
+      <Navbar />
       <main className="flex-1">
         <section className="relative overflow-hidden bg-petroleo-900 text-petroleo-50">
           <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-24 pt-20 md:grid-cols-2 md:px-10">
@@ -148,10 +140,10 @@ export default function ParaDonosDeQuadra() {
                   Cadastrar minha arena
                 </a>
                 <a
-                  href="#planos"
+                  href="#recursos"
                   className="sg rounded-full border border-white/30 px-7 py-4 font-semibold text-white hover:bg-white/10 transition"
                 >
-                  Ver planos
+                  Ver recursos
                 </a>
               </div>
               <div className="mt-11 flex flex-wrap gap-8">
@@ -228,81 +220,6 @@ export default function ParaDonosDeQuadra() {
                   </p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="planos" className="scroll-mt-20 bg-petroleo-900 px-5 py-24 text-petroleo-50 md:px-10">
-          <div className="mx-auto max-w-6xl">
-            <Eyebrow dark>Planos</Eyebrow>
-            <h2 className="wm mt-3 text-[clamp(32px,4.5vw,52px)] text-white">
-              Comece de graça, cresça sem limite
-            </h2>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
-                <div className="wm text-[22px] text-white">Start</div>
-                <div className="wm mt-3.5 text-[46px] text-mint">Grátis</div>
-                <p className="sg mt-1.5 text-[13px] text-sage">
-                  Só uma pequena taxa por reserva concluída.
-                </p>
-                <ul className="mt-6 space-y-3 text-sm text-mist">
-                  {["1 quadra", "Agenda e pagamentos", "Relatórios básicos"].map(
-                    (t) => (
-                      <li key={t} className="flex items-center gap-2.5">
-                        <CheckIcon />
-                        {t}
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-              <div className="relative rounded-3xl bg-mint p-8 text-deep">
-                <span className="sg absolute right-5 top-5 rounded-full bg-deep px-3 py-1 text-[11px] font-semibold text-mint">
-                  Popular
-                </span>
-                <div className="wm text-[22px]">Pro</div>
-                <div className="mt-3.5">
-                  <span className="wm text-[46px]">R$149</span>
-                  <span className="sg text-sm text-deep-soft">/mês</span>
-                </div>
-                <p className="sg mt-1.5 text-[13px] text-deep-soft">
-                  Taxa reduzida por reserva. Ideal para arenas movimentadas.
-                </p>
-                <ul className="mt-6 space-y-3 text-sm font-medium">
-                  {[
-                    "Quadras ilimitadas",
-                    "Preço dinâmico",
-                    "Destaque na busca",
-                    "Campeonatos",
-                  ].map((t) => (
-                    <li key={t} className="flex items-center gap-2.5">
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#00352C" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M20 6 9 17l-5-5" />
-                      </svg>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
-                <div className="wm text-[22px] text-white">Rede</div>
-                <div className="wm mt-3.5 text-[46px] text-mint">Sob medida</div>
-                <p className="sg mt-1.5 text-[13px] text-sage">
-                  Para franquias e redes com várias unidades.
-                </p>
-                <ul className="mt-6 space-y-3 text-sm text-mist">
-                  {[
-                    "Multiunidades",
-                    "Dashboard avançado",
-                    "Integrações e API",
-                  ].map((t) => (
-                    <li key={t} className="flex items-center gap-2.5">
-                      <CheckIcon />
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </div>
         </section>
