@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Wordmark({ className = "text-[26px]" }: { className?: string }) {
@@ -13,7 +14,14 @@ export function Navbar() {
     <header className="sticky top-0 z-50 bg-petroleo-900/95 backdrop-blur border-b border-white/10">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-5 px-5 py-4 md:px-10">
         <Link href="/" aria-label="GolNext - página inicial">
-          <Wordmark />
+          <Image
+            src="/golnext-logo-light.png"
+            alt="GolNext"
+            width={150}
+            height={27}
+            priority
+            className="h-6 w-auto md:h-7"
+          />
         </Link>
         <nav className="flex items-center gap-x-6">
           <Link
