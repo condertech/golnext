@@ -199,11 +199,7 @@ export default function Home() {
           <FieldAccent />
           <div className="relative mx-auto flex min-h-[760px] max-w-6xl items-center px-5 py-20 md:px-10">
             <div className="max-w-[620px]">
-              <div className="sg inline-flex items-center gap-2 rounded-full border border-mint/35 bg-mint/15 px-4 py-2 text-[13px] tracking-wide text-mint">
-                <span className="inline-block h-[7px] w-[7px] rounded-full bg-mint" />
-                Quadras, jogadores e arenas no mesmo jogo
-              </div>
-              <h1 className="wm mt-7 text-[clamp(48px,8vw,92px)] text-white">
+              <h1 className="wm text-[clamp(48px,8vw,92px)] text-white">
                 Marque a quadra.
                 <br />
                 Chame o time.
@@ -229,11 +225,10 @@ export default function Home() {
                   Ver esportes
                 </a>
               </div>
-              <div className="mt-10 grid max-w-[520px] grid-cols-3 gap-3">
+              <div className="mt-10 grid max-w-[360px] grid-cols-2 gap-3">
                 {[
                   ["30s", "pra reservar"],
                   ["24h", "agenda online"],
-                  ["Pix", "e cartão"],
                 ].map(([n, l]) => (
                   <div key={l} className="border-l border-mint/35 pl-4">
                     <div className="wm text-[30px] text-mint">{n}</div>
