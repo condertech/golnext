@@ -175,7 +175,7 @@ function VerticalVideo() {
           aria-label="Demonstração do aplicativo GolNext"
         >
           <source
-            src="https://dvbac3tjktu9l.cloudfront.net/landing/IMG_1753%20(1).MP4"
+            src="https://dvbac3tjkru9l.cloudfront.net/landing/IMG_1753%20(1).MP4"
             type="video/mp4"
           />
           Seu navegador não oferece suporte à reprodução de vídeos.
