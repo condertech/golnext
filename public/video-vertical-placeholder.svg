@@ -1,9 +1,0 @@
-<svg width="720" height="1280" viewBox="0 0 720 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="720" height="1280" fill="#00352C"/>
-  <circle cx="360" cy="540" r="280" fill="#004D40"/>
-  <circle cx="360" cy="540" r="196" fill="#00695C" fill-opacity="0.55"/>
-  <path d="M326 474L448 540L326 606V474Z" fill="#54F5A6"/>
-  <text x="360" y="742" fill="white" font-family="Arial, sans-serif" font-size="52" font-weight="700" text-anchor="middle">Vídeo vertical</text>
-  <text x="360" y="803" fill="#B9E8D4" font-family="Arial, sans-serif" font-size="27" text-anchor="middle">Formato 9:16</text>
-  <text x="360" y="1160" fill="#B9E8D4" fill-opacity="0.72" font-family="Arial, sans-serif" font-size="22" text-anchor="middle">GolNext</text>
-</svg>

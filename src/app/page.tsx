@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { VerticalVideo } from "@/components/VerticalVideo";
 
 const siteUrl = process.env.URL || "https://golnext.netlify.app";
 
@@ -158,34 +159,6 @@ function CheckIcon() {
     >
       <path d="M20 6 9 17l-5-5" />
     </svg>
-  );
-}
-
-function VerticalVideo() {
-  return (
-    <div className="relative mx-auto w-full max-w-[340px]">
-      <div className="absolute -inset-8 rounded-[56px] bg-mint/15 blur-3xl" />
-      <div className="relative overflow-hidden rounded-[34px] border-[8px] border-deep bg-deep shadow-[0_30px_70px_rgba(0,53,44,0.28)]">
-        <video
-          className="aspect-[9/16] w-full bg-deep object-cover"
-          controls
-          playsInline
-          preload="metadata"
-          poster="/video-vertical-placeholder.svg"
-          aria-label="Demonstração do aplicativo GolNext"
-        >
-          <source
-            src="https://dvbac3tjkru9l.cloudfront.net/landing/IMG_1753%20(1).MP4"
-            type="video/mp4"
-          />
-          Seu navegador não oferece suporte à reprodução de vídeos.
-        </video>
-      </div>
-      <div className="sg mt-5 flex items-center justify-center gap-2 text-sm font-semibold text-ink-soft">
-        <span className="h-2 w-2 rounded-full bg-mint" />
-        Veja o GolNext em ação
-      </div>
-    </div>
   );
 }
 
