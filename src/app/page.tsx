@@ -161,25 +161,29 @@ function CheckIcon() {
   );
 }
 
-function PhoneFrame({
-  children,
-  legenda,
-  destaque = false,
-}: {
-  children: React.ReactNode;
-  legenda: string;
-  destaque?: boolean;
-}) {
+function VerticalVideo() {
   return (
-    <div className={destaque ? "sm:-translate-y-6" : ""}>
-      <div className="mx-auto w-[220px] rounded-[34px] border-[9px] border-deep bg-deep shadow-[0_24px_50px_rgba(0,53,44,0.22)]">
-        <div className="relative overflow-hidden rounded-[26px] bg-white">
-          <div className="absolute left-1/2 top-2 z-10 h-3.5 w-14 -translate-x-1/2 rounded-full bg-deep" />
-          {children}
-        </div>
+    <div className="relative mx-auto w-full max-w-[340px]">
+      <div className="absolute -inset-8 rounded-[56px] bg-mint/15 blur-3xl" />
+      <div className="relative overflow-hidden rounded-[34px] border-[8px] border-deep bg-deep shadow-[0_30px_70px_rgba(0,53,44,0.28)]">
+        <video
+          className="aspect-[9/16] w-full bg-deep object-cover"
+          controls
+          playsInline
+          preload="metadata"
+          poster="/video-vertical-placeholder.svg"
+          aria-label="Demonstração do aplicativo GolNext"
+        >
+          <source
+            src="https://dvbac3tjktu9l.cloudfront.net/landing/IMG_1753%20(1).MP4"
+            type="video/mp4"
+          />
+          Seu navegador não oferece suporte à reprodução de vídeos.
+        </video>
       </div>
-      <div className="sg mt-4 text-center text-sm font-semibold text-ink-soft">
-        {legenda}
+      <div className="sg mt-5 flex items-center justify-center gap-2 text-sm font-semibold text-ink-soft">
+        <span className="h-2 w-2 rounded-full bg-mint" />
+        Veja o GolNext em ação
       </div>
     </div>
   );
@@ -332,130 +336,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mt-14 grid items-end justify-items-center gap-10 sm:grid-cols-3">
-              <PhoneFrame legenda="Encontre a quadra">
-                <div className="bg-petroleo-900 px-4 pb-4 pt-9 text-white">
-                  <div className="wm text-sm">
-                    Gol<span className="text-mint">Next</span>
-                  </div>
-                  <div className="sg mt-1 text-[10px] text-mint">
-                    Curitiba, PR
-                  </div>
-                  <div className="sg mt-3 rounded-xl bg-white/15 px-3 py-2 text-[10px] text-white/75">
-                    Buscar quadra perto de mim
-                  </div>
-                </div>
-                <div className="space-y-2.5 p-3">
-                  {[
-                    ["Arena GolNext Centro", "R$140", "4.8", "1.2km"],
-                    ["Society Batel", "R$110", "4.6", "2.4km"],
-                    ["Quadra Portão Play", "R$90", "4.5", "3.1km"],
-                  ].map(([nome, preco, nota, dist]) => (
-                    <div
-                      key={nome}
-                      className="overflow-hidden rounded-xl border border-pale"
-                    >
-                      <div className="h-14 bg-gradient-to-br from-petroleo-300 to-petroleo-700" />
-                      <div className="p-2.5">
-                        <div className="flex items-center justify-between">
-                          <span className="wm text-[11px] text-ink">{nome}</span>
-                          <span className="wm text-[11px] text-petroleo-700">
-                            {preco}
-                          </span>
-                        </div>
-                        <div className="sg mt-1 text-[9px] text-ink-muted">
-                          <span className="text-mint">★</span> {nota} · {dist}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </PhoneFrame>
-
-              <PhoneFrame legenda="Reserve em segundos" destaque>
-                <div className="relative h-24 bg-gradient-to-br from-petroleo-400 to-petroleo-800">
-                  <span className="sg absolute left-3 top-9 rounded-full bg-black/35 px-2 py-1 text-[9px] font-semibold text-white">
-                    Society
-                  </span>
-                </div>
-                <div className="p-3.5">
-                  <div className="wm text-[13px] text-ink">
-                    Arena GolNext Centro
-                  </div>
-                  <div className="sg mt-1 text-[9px] text-ink-muted">
-                    <span className="text-mint">★</span> 4.8 (23 avaliações)
-                  </div>
-                  <div className="sg mt-4 text-[10px] font-semibold text-ink">
-                    Escolha o horário
-                  </div>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {[
-                      ["18:00", false],
-                      ["19:00", true],
-                      ["20:00", false],
-                      ["21:00", false],
-                    ].map(([hora, on]) => (
-                      <span
-                        key={hora as string}
-                        className={`sg rounded-lg px-2.5 py-1.5 text-[10px] font-semibold ${
-                          on
-                            ? "bg-petroleo-900 text-white"
-                            : "border border-pale text-ink-soft"
-                        }`}
-                      >
-                        {hora}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="wm mt-5 rounded-xl bg-mint py-2.5 text-center text-[12px] text-deep">
-                    Reservar · R$140
-                  </div>
-                </div>
-              </PhoneFrame>
-
-              <PhoneFrame legenda="Painel do dono">
-                <div className="bg-petroleo-900 px-4 pb-4 pt-9 text-white">
-                  <div className="wm text-sm">Painel</div>
-                  <div className="sg mt-0.5 text-[10px] text-mint">
-                    Arena Central
-                  </div>
-                </div>
-                <div className="p-3">
-                  <div className="rounded-xl bg-petroleo-50 p-3">
-                    <div className="sg text-[8px] uppercase tracking-wider text-ink-muted">
-                      Faturamento do mês
-                    </div>
-                    <div className="wm mt-0.5 text-xl text-petroleo-700">
-                      +R$ 18.400
-                    </div>
-                  </div>
-                  <div className="mt-3 space-y-2">
-                    {[
-                      ["19:00 · Quadra 1", "Reservada", true],
-                      ["20:00 · Quadra 2", "Reservada", true],
-                      ["21:00 · Quadra 1", "Livre", false],
-                    ].map(([hora, status, on]) => (
-                      <div
-                        key={hora as string}
-                        className="flex items-center justify-between rounded-lg border border-pale px-2.5 py-2"
-                      >
-                        <span className="sg text-[9px] text-ink-soft">
-                          {hora}
-                        </span>
-                        <span
-                          className={`sg rounded-full px-2 py-0.5 text-[8px] font-semibold ${
-                            on
-                              ? "bg-mint/25 text-petroleo-700"
-                              : "bg-pale text-ink-muted"
-                          }`}
-                        >
-                          {status}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </PhoneFrame>
+            <div className="mt-14">
+              <VerticalVideo />
             </div>
           </div>
         </section>
