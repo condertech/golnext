@@ -63,18 +63,6 @@ const recursos = [
   },
 ];
 
-function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
-  return (
-    <div
-      className={`sg text-[13px] font-semibold uppercase tracking-[0.14em] ${
-        dark ? "text-mint" : "text-petroleo-700"
-      }`}
-    >
-      {children}
-    </div>
-  );
-}
-
 function PainelMock() {
   return (
     <div className="rounded-3xl bg-white p-7 shadow-[0_30px_70px_rgba(0,0,0,0.3)]" aria-hidden="true">
@@ -180,8 +168,7 @@ export default function ParaDonosDeQuadra() {
 
         <section id="como" className="scroll-mt-20 bg-petroleo-50 px-5 py-24 md:px-10">
           <div className="mx-auto max-w-6xl">
-            <Eyebrow>Como funciona</Eyebrow>
-            <h2 className="wm mt-3 text-[clamp(32px,4.5vw,52px)] text-ink">
+            <h2 className="wm text-[clamp(32px,4.5vw,52px)] text-ink">
               Da inscrição à primeira reserva
             </h2>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -201,8 +188,7 @@ export default function ParaDonosDeQuadra() {
 
         <section id="recursos" className="scroll-mt-20 bg-white px-5 py-24 md:px-10">
           <div className="mx-auto max-w-6xl">
-            <Eyebrow>Recursos para arenas</Eyebrow>
-            <h2 className="wm mt-3 text-[clamp(32px,4.5vw,52px)] text-ink">
+            <h2 className="wm text-[clamp(32px,4.5vw,52px)] text-ink">
               Gestão completa num painel só
             </h2>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

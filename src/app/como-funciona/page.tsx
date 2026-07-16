@@ -77,7 +77,7 @@ export default function ComoFunciona() {
             </h2>
             <div className="mt-6 flex flex-wrap justify-center gap-4">
               <Link
-                href="/#baixar"
+                href="/baixar-app"
                 className="rounded-xl bg-petroleo-900 px-6 py-3.5 font-bold text-white hover:bg-petroleo-800 transition"
               >
                 Baixar o app

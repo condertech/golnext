@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { VerticalVideo } from "@/components/VerticalVideo";
@@ -9,7 +10,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   name: "GolNext",
-  operatingSystem: "ANDROID",
+  operatingSystem: "Android, iOS",
   applicationCategory: "SportsApplication",
   description:
     "Encontre quadras esportivas, veja horários livres e reserve em poucos toques.",
@@ -45,12 +46,12 @@ const passos = [
 ];
 
 const esportes = [
-  { nome: "Futebol", tipos: "Society, campo e futsal", icon: "soccer" },
-  { nome: "Beach tennis", tipos: "Areia, dupla e aula", icon: "racket" },
-  { nome: "Vôlei", tipos: "Quadra e praia", icon: "volley" },
-  { nome: "Basquete", tipos: "3x3 e 5x5", icon: "basket" },
-  { nome: "Tênis", tipos: "Saibro e rápida", icon: "tennis" },
-  { nome: "Padel", tipos: "Duplas e torneios", icon: "padel" },
+  { nome: "Futebol", tipos: "Society, campo e futsal", icon: "soccer", slug: "futebol" },
+  { nome: "Beach tennis", tipos: "Areia, dupla e aula", icon: "racket", slug: "beach-tennis" },
+  { nome: "Vôlei", tipos: "Quadra e praia", icon: "volley", slug: "volei" },
+  { nome: "Basquete", tipos: "3x3 e 5x5", icon: "basket", slug: "basquete" },
+  { nome: "Tênis", tipos: "Saibro e rápida", icon: "tennis", slug: "tenis" },
+  { nome: "Padel", tipos: "Duplas e torneios", icon: "padel", slug: "padel" },
 ];
 
 const recursos = [
@@ -70,18 +71,6 @@ const recursos = [
       "Convites, lista de jogadores, campeonatos e visibilidade para preencher horários vazios.",
   },
 ];
-
-function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
-  return (
-    <div
-      className={`sg text-[13px] font-semibold uppercase tracking-[0.14em] ${
-        dark ? "text-mint" : "text-petroleo-700"
-      }`}
-    >
-      {children}
-    </div>
-  );
-}
 
 function SportIcon({ type }: { type: string }) {
   const common = {
@@ -169,9 +158,32 @@ function FieldAccent() {
       className="pointer-events-none absolute bottom-0 left-1/2 h-72 w-[520px] -translate-x-1/2 text-mint/20"
       aria-hidden="true"
     >
-      <rect x="48" y="38" width="324" height="184" rx="12" fill="none" stroke="currentColor" strokeWidth="3" />
-      <line x1="210" y1="38" x2="210" y2="222" stroke="currentColor" strokeWidth="3" />
-      <circle cx="210" cy="130" r="42" fill="none" stroke="currentColor" strokeWidth="3" />
+      <rect
+        x="48"
+        y="38"
+        width="324"
+        height="184"
+        rx="12"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+      />
+      <line
+        x1="210"
+        y1="38"
+        x2="210"
+        y2="222"
+        stroke="currentColor"
+        strokeWidth="3"
+      />
+      <circle
+        cx="210"
+        cy="130"
+        r="42"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+      />
     </svg>
   );
 }
@@ -186,7 +198,7 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
 
-        <section className="relative min-h-[760px] overflow-hidden bg-deepest text-white">
+        <section className="relative min-h-[680px] overflow-hidden bg-deepest text-white sm:min-h-[760px]">
           <Image
             src="/golnext-hero-players.png"
             alt="Jogadores comemorando em uma quadra esportiva"
@@ -198,35 +210,35 @@ export default function Home() {
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,31,25,0.96)_0%,rgba(0,53,44,0.86)_34%,rgba(0,53,44,0.38)_68%,rgba(0,31,25,0.16)_100%)]" />
           <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-deepest to-transparent" />
           <FieldAccent />
-          <div className="relative mx-auto flex min-h-[760px] max-w-6xl items-center px-5 py-20 md:px-10">
+          <div className="relative mx-auto flex min-h-[680px] max-w-6xl items-center px-5 py-16 sm:min-h-[760px] sm:py-20 md:px-10">
             <div className="max-w-[620px]">
-              <h1 className="wm text-[clamp(48px,8vw,92px)] text-white">
-                Marque a quadra.
-                <br />
+              <h1 className="wm text-[clamp(40px,13vw,92px)] text-white sm:text-[clamp(48px,8vw,92px)]">
                 Chame o time.
                 <br />
-                <span className="text-mint">Jogue mais.</span>
+                chame o adversário.
+                <br />
+                <span className="text-mint">e Reserve a quadra.</span>
               </h1>
               <p className="mt-6 max-w-[560px] text-[clamp(17px,2vw,21px)] leading-relaxed text-petroleo-100">
                 A GolNext conecta quem quer jogar com quem tem quadra para
                 receber. Reserve horários, encontre esportes perto de você e
                 ajude arenas a manter a agenda cheia.
               </p>
-              <div className="mt-9 flex flex-wrap gap-3.5">
-                <a
-                  href="#comece"
-                  className="wm rounded-full bg-mint px-8 py-4 text-lg text-deep hover:brightness-95 transition"
+              <div className="mt-8 flex flex-col gap-3 min-[360px]:flex-row min-[360px]:flex-wrap sm:mt-9 sm:gap-3.5">
+                <Link
+                  href="/baixar-app"
+                  className="wm w-full rounded-full bg-mint px-7 py-3.5 text-center text-lg text-deep transition hover:brightness-95 min-[360px]:w-auto sm:px-8 sm:py-4"
                 >
                   Começar agora
-                </a>
-                <a
-                  href="#esportes"
-                  className="sg rounded-full border border-white/35 px-7 py-4 font-semibold text-white hover:bg-white/10 transition"
+                </Link>
+                <Link
+                  href="/aluguel-de-quadras"
+                  className="sg w-full rounded-full border border-white/35 px-7 py-3.5 text-center font-semibold text-white transition hover:bg-white/10 min-[360px]:w-auto sm:py-4"
                 >
                   Ver esportes
-                </a>
+                </Link>
               </div>
-              <div className="mt-10 grid max-w-[360px] grid-cols-2 gap-3">
+              <div className="mt-9 grid w-full max-w-[360px] grid-cols-2 gap-3 sm:mt-10">
                 {[
                   ["30s", "pra reservar"],
                   ["24h", "agenda online"],
@@ -241,25 +253,37 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="esportes" className="scroll-mt-24 bg-petroleo-50 px-5 py-20 md:px-10">
+        <section
+          id="esportes"
+          className="scroll-mt-24 bg-petroleo-50 px-5 py-16 sm:py-20 md:px-10"
+        >
           <div className="mx-auto max-w-6xl">
-            <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div className="grid items-center gap-8 lg:grid-cols-[1fr_300px]">
               <div>
-                <Eyebrow>Esportes de quadra</Eyebrow>
-                <h2 className="wm mt-3 text-[clamp(34px,5vw,58px)] text-ink">
-                  Do racha ao torneio, tudo cabe aqui.
+                <h2 className="wm text-[clamp(34px,5vw,58px)] text-ink">
+                  Do futebol ao padel, tudo cabe aqui.
                 </h2>
+                <p className="mt-5 max-w-xl text-ink-soft">
+                  Descubra novas quadras e agende sua partida com facilidade.
+                </p>
               </div>
-              <p className="max-w-md text-ink-soft">
-                Ícones rápidos para o jogador encontrar o que procura e para a
-                arena mostrar tudo que oferece.
-              </p>
+              <div className="relative mx-auto h-[260px] w-full max-w-[280px] sm:h-[320px]">
+                <div className="absolute inset-x-4 bottom-4 h-24 rounded-full bg-petroleo-300/25 blur-3xl" />
+                <Image
+                  src="/IMG_1807.PNG"
+                  alt="Jogador de vôlei saltando para atacar a bola"
+                  fill
+                  sizes="(max-width: 1024px) 280px, 300px"
+                  className="object-contain drop-shadow-[0_24px_24px_rgba(0,53,44,0.24)]"
+                />
+              </div>
             </div>
             <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
               {esportes.map((e) => (
-                <div
+                <Link
                   key={e.nome}
-                  className="group rounded-2xl border border-pale bg-white p-5 shadow-[0_10px_24px_rgba(0,53,44,0.05)] transition hover:-translate-y-1 hover:border-petroleo-300"
+                  href={`/aluguel-de-quadras/${e.slug}`}
+                  className="group min-w-0 rounded-2xl border border-pale bg-white p-4 shadow-[0_10px_24px_rgba(0,53,44,0.05)] transition hover:-translate-y-1 hover:border-petroleo-300 sm:p-5"
                 >
                   <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-mint/18 text-petroleo-800 transition group-hover:bg-petroleo-900 group-hover:text-mint">
                     <SportIcon type={e.icon} />
@@ -268,58 +292,78 @@ export default function Home() {
                   <div className="sg mt-1.5 text-[12px] leading-snug text-ink-muted">
                     {e.tipos}
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="como" className="scroll-mt-24 bg-white px-5 py-22 md:px-10">
+        <section
+          id="como"
+          className="scroll-mt-24 bg-white px-5 py-16 sm:py-22 md:px-10"
+        >
           <div className="mx-auto max-w-6xl">
-            <Eyebrow>Como funciona</Eyebrow>
-            <h2 className="wm mt-3 text-[clamp(34px,5vw,58px)] text-ink">
-              Menos conversa, mais jogo marcado.
-            </h2>
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {passos.map((p) => (
-                <div
-                  key={p.numero}
-                  className="rounded-2xl border border-pale bg-petroleo-50/70 p-7"
-                >
-                  <div className="wm text-[38px] text-petroleo-300">{p.numero}</div>
-                  <h3 className="wm mt-3 text-2xl text-ink">{p.titulo}</h3>
-                  <p className="mt-3 leading-relaxed text-ink-soft">{p.texto}</p>
+            <div className="grid items-center gap-8 lg:grid-cols-[280px_1fr] lg:gap-12">
+              <div className="relative order-2 mx-auto h-[320px] w-full max-w-[280px] sm:h-[390px] lg:order-1">
+                <div className="absolute inset-x-3 bottom-3 h-24 rounded-full bg-mint/20 blur-3xl" />
+                <Image
+                  src="/IMG_1805.PNG"
+                  alt="Jogadora de tênis preparada para rebater"
+                  fill
+                  sizes="(max-width: 1024px) 280px, 300px"
+                  className="object-contain drop-shadow-[0_26px_24px_rgba(0,53,44,0.2)]"
+                />
+              </div>
+              <div className="order-1 lg:order-2">
+                <h2 className="wm text-[clamp(34px,5vw,58px)] text-ink">
+                  Menos conversa, mais jogo marcado.
+                </h2>
+                <div className="mt-10 grid gap-5 md:grid-cols-3">
+                  {passos.map((p) => (
+                    <div
+                      key={p.numero}
+                      className="rounded-2xl border border-pale bg-petroleo-50/70 p-6 sm:p-7"
+                    >
+                      <div className="wm text-[38px] text-petroleo-300">
+                        {p.numero}
+                      </div>
+                      <h3 className="wm mt-3 text-2xl text-ink">{p.titulo}</h3>
+                      <p className="mt-3 leading-relaxed text-ink-soft">
+                        {p.texto}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="app" className="scroll-mt-24 overflow-hidden bg-petroleo-50 px-5 py-22 md:px-10">
+        <section
+          id="app"
+          className="scroll-mt-24 overflow-hidden bg-petroleo-50 px-5 py-16 sm:py-22 md:px-10"
+        >
           <div className="mx-auto max-w-6xl">
             <div className="text-center">
-              <Eyebrow>Demonstração</Eyebrow>
               <h2 className="wm mx-auto mt-3 max-w-2xl text-[clamp(34px,5vw,58px)] text-ink">
                 O Gol<span className="text-petroleo-700">Next</span> na palma da
                 mão.
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-ink-soft">
-                Uma prévia do app: buscar quadra, reservar em segundos e, para
-                as arenas, controlar tudo pelo painel.
-              </p>
             </div>
 
-            <div className="mt-14">
+            <div className="mt-10 sm:mt-14">
               <VerticalVideo />
             </div>
           </div>
         </section>
 
-        <section id="recursos" className="scroll-mt-24 bg-deep px-5 py-22 text-petroleo-50 md:px-10">
+        <section
+          id="recursos"
+          className="scroll-mt-24 bg-deep px-5 py-16 text-petroleo-50 sm:py-22 md:px-10"
+        >
           <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
             <div>
-              <Eyebrow dark>Para jogadores e arenas</Eyebrow>
-              <h2 className="wm mt-3 text-[clamp(34px,5vw,58px)] text-white">
+              <h2 className="wm text-[clamp(34px,5vw,58px)] text-white">
                 Uma plataforma para os dois lados da quadra.
               </h2>
               <p className="mt-5 max-w-md leading-relaxed text-mist">
@@ -329,19 +373,24 @@ export default function Home() {
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               {recursos.map((r) => (
-                <div key={r.titulo} className="rounded-2xl border border-white/10 bg-white/6 p-6">
+                <div
+                  key={r.titulo}
+                  className="rounded-2xl border border-white/10 bg-white/6 p-6"
+                >
                   <div className="text-mint">
                     <CheckIcon />
                   </div>
                   <h3 className="wm mt-4 text-xl text-white">{r.titulo}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-sage">{r.texto}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-sage">
+                    {r.texto}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-petroleo-50 px-5 py-22 md:px-10">
+        <section className="bg-petroleo-50 px-5 py-16 sm:py-22 md:px-10">
           <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
             <div className="overflow-hidden rounded-2xl bg-white shadow-[0_16px_36px_rgba(0,53,44,0.07)]">
               <div className="relative h-56">
@@ -353,25 +402,24 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="p-8">
-              <Eyebrow>Quem joga</Eyebrow>
-              <h2 className="wm mt-3 text-[clamp(30px,4vw,46px)] text-ink">
-                Ache quadra sem perder a resenha.
-              </h2>
-              <ul className="mt-6 space-y-4 text-ink-soft">
-                {[
-                  "Horários livres por esporte e região",
-                  "Pagamento online e confirmação automática",
-                  "Convite para amigos e histórico de reservas",
-                ].map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-0.5 text-petroleo-700">
-                      <CheckIcon />
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="p-6 sm:p-8">
+                <h2 className="wm text-[clamp(30px,4vw,46px)] text-ink">
+                  Ache quadra sem burocracia.
+                </h2>
+                <ul className="mt-6 space-y-4 text-ink-soft">
+                  {[
+                    "Horários livres por esporte e região",
+                    "Pagamento online e confirmação automática",
+                    "Convite para amigos e histórico de reservas",
+                  ].map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-0.5 text-petroleo-700">
+                        <CheckIcon />
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
             <div className="overflow-hidden rounded-2xl bg-white shadow-[0_16px_36px_rgba(0,53,44,0.07)]">
@@ -384,35 +432,36 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="p-8">
-              <Eyebrow>Quem administra</Eyebrow>
-              <h2 className="wm mt-3 text-[clamp(30px,4vw,46px)] text-ink">
-                Coloque sua arena no fluxo do jogo.
-              </h2>
-              <ul className="mt-6 space-y-4 text-ink-soft">
-                {[
-                  "Agenda digital para múltiplas quadras",
-                  "Reservas pagas antes do horário",
-                  "Mais visibilidade para preencher horários vazios",
-                ].map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-0.5 text-petroleo-700">
-                      <CheckIcon />
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="p-6 sm:p-8">
+                <h2 className="wm text-[clamp(30px,4vw,46px)] text-ink">
+                  Coloque sua arena no fluxo do jogo.
+                </h2>
+                <ul className="mt-6 space-y-4 text-ink-soft">
+                  {[
+                    "Agenda digital para múltiplas quadras",
+                    "Reservas pagas antes do horário",
+                    "Mais visibilidade para preencher horários vazios",
+                  ].map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-0.5 text-petroleo-700">
+                        <CheckIcon />
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="cameras" className="scroll-mt-24 bg-deep px-5 py-22 text-petroleo-50 md:px-10">
+        <section
+          id="cameras"
+          className="scroll-mt-24 bg-deep px-5 py-16 text-petroleo-50 sm:py-22 md:px-10"
+        >
           <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
             <div>
-              <Eyebrow dark>Recurso opcional</Eyebrow>
-              <h2 className="wm mt-3 text-[clamp(34px,5vw,58px)] text-white">
+              <h2 className="wm text-[clamp(34px,5vw,58px)] text-white">
                 Grave suas partidas em vídeo.
               </h2>
               <p className="mt-5 max-w-md leading-relaxed text-mist">
@@ -440,7 +489,9 @@ export default function Home() {
                       <CheckIcon />
                     </span>
                     <span>
-                      <span className="wm block text-lg text-white">{titulo}</span>
+                      <span className="wm block text-lg text-white">
+                        {titulo}
+                      </span>
                       <span className="mt-1 block text-sm leading-relaxed text-sage">
                         {texto}
                       </span>
@@ -456,10 +507,36 @@ export default function Home() {
             >
               <div className="relative aspect-video bg-gradient-to-br from-petroleo-800 to-deepest">
                 <div className="absolute inset-0 opacity-25">
-                  <svg viewBox="0 0 400 225" className="h-full w-full text-mint">
-                    <rect x="18" y="18" width="364" height="189" rx="8" fill="none" stroke="currentColor" strokeWidth="2" />
-                    <line x1="200" y1="18" x2="200" y2="207" stroke="currentColor" strokeWidth="2" />
-                    <circle cx="200" cy="112" r="34" fill="none" stroke="currentColor" strokeWidth="2" />
+                  <svg
+                    viewBox="0 0 400 225"
+                    className="h-full w-full text-mint"
+                  >
+                    <rect
+                      x="18"
+                      y="18"
+                      width="364"
+                      height="189"
+                      rx="8"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <line
+                      x1="200"
+                      y1="18"
+                      x2="200"
+                      y2="207"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <circle
+                      cx="200"
+                      cy="112"
+                      r="34"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
                   </svg>
                 </div>
                 <span className="sg absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/45 px-3 py-1.5 text-[11px] font-semibold text-white">
@@ -470,7 +547,12 @@ export default function Home() {
                   Arena Central · 19:32
                 </span>
                 <div className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-mint text-deep">
-                  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="26"
+                    height="26"
+                    fill="currentColor"
+                  >
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
@@ -485,30 +567,44 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="comece" className="scroll-mt-24 bg-mint px-5 py-22 md:px-10">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="wm text-[clamp(38px,6vw,68px)] text-deep">
-              O próximo horário pode ser seu.
-            </h2>
-            <p className="mx-auto mt-5 max-w-[620px] text-lg leading-relaxed text-deep-soft">
-              Entre na lista da{" "}
-              <span className="wm text-deep">GolNext</span> para reservar
-              quadras, cadastrar sua arena ou acompanhar o lançamento na sua
-              cidade.
-            </p>
-            <div className="mt-9 flex flex-wrap justify-center gap-3.5">
-              <a
-                href="mailto:suporte@golnext.com?subject=Quero%20usar%20a%20GolNext"
-                className="wm rounded-full bg-deep px-8 py-4 text-lg text-white hover:bg-deepest transition"
-              >
-                Quero jogar
-              </a>
-              <a
-                href="mailto:suporte@golnext.com?subject=Quero%20cadastrar%20minha%20arena"
-                className="sg rounded-full border-2 border-deep px-7 py-4 font-semibold text-deep hover:bg-deep hover:text-white transition"
-              >
-                Tenho uma arena
-              </a>
+        <section
+          id="comece"
+          className="scroll-mt-24 overflow-hidden bg-mint px-5 py-16 sm:py-22 md:px-10"
+        >
+          <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[1fr_430px] lg:gap-12">
+            <div className="text-center lg:text-left">
+              <h2 className="wm text-[clamp(38px,6vw,68px)] text-deep">
+                O próximo horário pode ser seu.
+              </h2>
+              <p className="mx-auto mt-5 max-w-[620px] text-lg leading-relaxed text-deep-soft lg:mx-0">
+                Entre na lista da <span className="wm text-deep">GolNext</span>{" "}
+                para reservar quadras, cadastrar sua arena ou acompanhar o
+                lançamento na sua cidade.
+              </p>
+              <div className="mt-8 flex flex-col justify-center gap-3 min-[380px]:flex-row min-[380px]:flex-wrap sm:mt-9 sm:gap-3.5 lg:justify-start">
+                <a
+                  href="mailto:suporte@golnext.com?subject=Quero%20usar%20a%20GolNext"
+                  className="wm w-full rounded-full bg-deep px-8 py-4 text-center text-lg text-white transition hover:bg-deepest min-[380px]:w-auto"
+                >
+                  Quero jogar
+                </a>
+                <a
+                  href="mailto:suporte@golnext.com?subject=Quero%20cadastrar%20minha%20arena"
+                  className="sg w-full rounded-full border-2 border-deep px-7 py-4 text-center font-semibold text-deep transition hover:bg-deep hover:text-white min-[380px]:w-auto"
+                >
+                  Tenho uma arena
+                </a>
+              </div>
+            </div>
+            <div className="relative mx-auto h-[270px] w-full max-w-[430px] sm:h-[330px]">
+              <div className="absolute inset-x-6 bottom-5 h-20 rounded-full bg-deep/20 blur-3xl" />
+              <Image
+                src="/IMG_1806.PNG"
+                alt="Jogador de futebol realizando uma bicicleta"
+                fill
+                sizes="(max-width: 1024px) 430px, 460px"
+                className="scale-[1.16] object-contain drop-shadow-[0_26px_24px_rgba(0,53,44,0.26)] sm:scale-[1.35]"
+              />
             </div>
           </div>
         </section>

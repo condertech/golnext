@@ -1,13 +1,24 @@
 import type { MetadataRoute } from "next";
+import { esportes } from "@/data/esportes";
 
 const siteUrl = process.env.URL || "https://golnext.netlify.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const paginas: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${siteUrl}/baixar-app`,
+      changeFrequency: "monthly",
+      priority: 0.95,
+    },
+    {
+      url: `${siteUrl}/aluguel-de-quadras`,
+      changeFrequency: "weekly",
+      priority: 0.95,
     },
     {
       url: `${siteUrl}/como-funciona`,
@@ -35,4 +46,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.4,
     },
   ];
+
+  const modalidades: MetadataRoute.Sitemap = esportes.map((esporte) => ({
+    url: `${siteUrl}/aluguel-de-quadras/${esporte.slug}`,
+    changeFrequency: "weekly",
+    priority: 0.85,
+  }));
+
+  return [...paginas, ...modalidades];
 }

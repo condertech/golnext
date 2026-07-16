@@ -11,9 +11,9 @@ export function VerticalVideo() {
   const [started, setStarted] = useState(false);
 
   return (
-    <div className="relative mx-auto w-full max-w-[320px]">
-      <div className="absolute -inset-8 rounded-[56px] bg-mint/15 blur-3xl" />
-      <div className="relative aspect-[9/19.5] overflow-hidden rounded-[34px] border-[8px] border-deep bg-deep shadow-[0_30px_70px_rgba(0,53,44,0.28)]">
+    <div className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px]">
+      <div className="absolute -inset-5 rounded-[44px] bg-mint/15 blur-3xl sm:-inset-8 sm:rounded-[56px]" />
+      <div className="relative aspect-[9/19.5] overflow-hidden rounded-[30px] border-[6px] border-deep bg-deep shadow-[0_30px_70px_rgba(0,53,44,0.28)] sm:rounded-[34px] sm:border-[8px]">
         <video
           ref={videoRef}
           className="h-full w-full bg-deep object-contain"
