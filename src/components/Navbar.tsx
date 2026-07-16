@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { esportes } from "@/data/esportes";
 
 const rotas = [
@@ -30,6 +30,8 @@ export function Wordmark({ className = "text-[26px]" }: { className?: string }) 
 
 export function Navbar() {
   const [menuAberto, setMenuAberto] = useState(false);
+  const [navbarVisivel, setNavbarVisivel] = useState(true);
+  const ultimaPosicao = useRef(0);
   const pathname = usePathname();
   const paginaInicial = pathname === "/";
 
@@ -42,12 +44,42 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", fecharComEscape);
   }, []);
 
+  useEffect(() => {
+    if (!paginaInicial) return;
+
+    ultimaPosicao.current = window.scrollY;
+
+    function observarRolagem() {
+      const posicaoAtual = window.scrollY;
+
+      if (posicaoAtual <= 24) {
+        setNavbarVisivel(true);
+      } else if (posicaoAtual > ultimaPosicao.current) {
+        setNavbarVisivel(false);
+      } else if (posicaoAtual < ultimaPosicao.current) {
+        setNavbarVisivel(true);
+      }
+
+      ultimaPosicao.current = Math.max(posicaoAtual, 0);
+    }
+
+    window.addEventListener("scroll", observarRolagem, { passive: true });
+    return () => window.removeEventListener("scroll", observarRolagem);
+  }, [paginaInicial]);
+
   function rotaAtiva(href: string) {
     return href === "/" ? pathname === href : pathname.startsWith(href);
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-petroleo-900/95 backdrop-blur">
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-petroleo-900/95 backdrop-blur transition-transform duration-300 ease-out will-change-transform motion-reduce:transition-none ${
+          !paginaInicial || navbarVisivel || menuAberto
+            ? "translate-y-0"
+            : "-translate-y-full"
+        }`}
+      >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3.5 sm:px-5 md:px-10 md:py-4">
         {paginaInicial ? (
           <Link href="/" aria-label="GolNext - página inicial" onNavigate={() => setMenuAberto(false)}>
@@ -101,7 +133,10 @@ export function Navbar() {
           aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
           aria-expanded={menuAberto}
           aria-controls="menu-mobile"
-          onClick={() => setMenuAberto((aberto) => !aberto)}
+          onClick={() => {
+            setNavbarVisivel(true);
+            setMenuAberto((aberto) => !aberto);
+          }}
           className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-mint hover:text-mint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint md:hidden"
         >
           <span className="sr-only">Menu</span>
@@ -194,6 +229,8 @@ export function Navbar() {
           </div>
         </nav>
       </div>
-    </header>
+      </header>
+      <div aria-hidden="true" className="h-[69px] shrink-0 md:h-[77px]" />
+    </>
   );
 }
