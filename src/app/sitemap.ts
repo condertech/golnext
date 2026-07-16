@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { esportes } from "@/data/esportes";
-
-const siteUrl = process.env.URL || "https://golnext.netlify.app";
+import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paginas: MetadataRoute.Sitemap = [

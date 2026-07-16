@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Space_Grotesk, Archivo } from "next/font/google";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -18,8 +19,6 @@ const archivo = Archivo({
   style: ["normal", "italic"],
   variable: "--font-archivo",
 });
-
-const siteUrl = process.env.URL || "https://golnext.netlify.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

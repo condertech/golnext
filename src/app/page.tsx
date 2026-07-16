@@ -3,8 +3,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { VerticalVideo } from "@/components/VerticalVideo";
-
-const siteUrl = process.env.URL || "https://golnext.netlify.app";
+import { siteUrl } from "@/lib/site";
 
 const structuredData = {
   "@context": "https://schema.org",

@@ -3,8 +3,7 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { esportes } from "@/data/esportes";
-
-const siteUrl = process.env.URL || "https://golnext.netlify.app";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Aluguel de Quadras Esportivas",

@@ -4,8 +4,7 @@ import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { encontrarEsporte, esportes } from "@/data/esportes";
-
-const siteUrl = process.env.URL || "https://golnext.netlify.app";
+import { siteUrl } from "@/lib/site";
 
 type Props = { params: Promise<{ esporte: string }> };
 
