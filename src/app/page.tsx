@@ -317,11 +317,11 @@ export default function Home() {
                 <h2 className="wm text-[clamp(34px,5vw,58px)] text-ink">
                   Menos conversa, mais jogo marcado.
                 </h2>
-                <div className="mt-10 grid gap-5 md:grid-cols-3">
+                <div className="mt-8 grid gap-2 md:mt-10 md:grid-cols-3 md:gap-5">
                   {passos.map((p) => (
                     <div
                       key={p.numero}
-                      className="rounded-2xl border border-pale bg-petroleo-50/70 p-6 sm:p-7"
+                      className="py-5 md:rounded-2xl md:border md:border-pale md:bg-petroleo-50/70 md:p-7"
                     >
                       <div className="wm text-[38px] text-petroleo-300">
                         {p.numero}
@@ -370,11 +370,11 @@ export default function Home() {
                 no-show e acompanha tudo sem depender de mensagens soltas.
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-2 sm:grid-cols-3 sm:gap-4">
               {recursos.map((r) => (
                 <div
                   key={r.titulo}
-                  className="rounded-2xl border border-white/10 bg-white/6 p-6"
+                  className="py-4 sm:rounded-2xl sm:border sm:border-white/10 sm:bg-white/6 sm:p-6"
                 >
                   <div className="text-mint">
                     <CheckIcon />
@@ -394,11 +394,11 @@ export default function Home() {
             <div className="overflow-hidden rounded-2xl bg-white shadow-[0_16px_36px_rgba(0,53,44,0.07)]">
               <div className="relative h-56">
                 <Image
-                  src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80"
-                  alt="Jogadores em atividade esportiva"
+                  src="/IMG_1813.PNG"
+                  alt="Gestor de arena usando o painel de reservas GolNext"
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
+                  className="object-cover object-[center_58%]"
                 />
               </div>
               <div className="p-6 sm:p-8">
@@ -424,11 +424,11 @@ export default function Home() {
             <div className="overflow-hidden rounded-2xl bg-white shadow-[0_16px_36px_rgba(0,53,44,0.07)]">
               <div className="relative h-56">
                 <Image
-                  src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=1200&q=80"
-                  alt="Quadra esportiva preparada para receber jogadores"
+                  src="/IMG_1812.PNG"
+                  alt="Quadra de futebol society disponível para reserva"
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
+                  className="object-cover object-center"
                 />
               </div>
               <div className="p-6 sm:p-8">
