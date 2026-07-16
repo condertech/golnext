@@ -80,7 +80,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: { icon: "/golnext-icon.png", apple: "/golnext-icon.png" },
+  icons: {
+    icon: [{ url: "/icone.jpeg", type: "image/jpeg" }],
+    apple: [{ url: "/icone.jpeg", type: "image/jpeg" }],
+  },
 };
 
 export default function RootLayout({
