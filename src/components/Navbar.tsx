@@ -12,6 +12,7 @@ const rotas = [
   { href: "/aluguel-de-quadras", label: "Aluguel de quadras" },
   { href: "/como-funciona", label: "Como funciona" },
   { href: "/para-donos-de-quadra", label: "Para donos de quadra" },
+  { href: "/cadastrar-quadra", label: "Cadastrar quadra" },
   { href: "/faq", label: "Perguntas frequentes" },
 ];
 
@@ -147,6 +148,9 @@ export function Navbar() {
           </Link>
           <Link href="/aluguel-de-quadras" className="sg whitespace-nowrap text-sm text-mist hover:text-white">
             Esportes
+          </Link>
+          <Link href="/cadastrar-quadra" className="sg whitespace-nowrap text-sm text-mist hover:text-white">
+            Cadastrar quadra
           </Link>
           <Link href="/baixar-app" className="sg whitespace-nowrap rounded-full bg-mint px-5 py-2.5 text-sm font-semibold text-deep transition hover:brightness-95">
             Baixar app

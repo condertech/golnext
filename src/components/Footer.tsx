@@ -69,6 +69,9 @@ export function Footer() {
               <Link href="/para-donos-de-quadra" className="hover:text-mint">
                 Para arenas
               </Link>
+              <Link href="/cadastrar-quadra" className="hover:text-mint">
+                Cadastrar quadra
+              </Link>
               <a href="mailto:suporte@golnext.com" className="hover:text-mint">
                 Contato
               </a>

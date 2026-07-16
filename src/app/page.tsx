@@ -587,12 +587,12 @@ export default function Home() {
                 >
                   Quero jogar
                 </a>
-                <a
-                  href="mailto:suporte@golnext.com?subject=Quero%20cadastrar%20minha%20arena"
+                <Link
+                  href="/cadastrar-quadra"
                   className="sg w-full rounded-full border-2 border-deep px-7 py-4 text-center font-semibold text-deep transition hover:bg-deep hover:text-white min-[380px]:w-auto"
                 >
                   Tenho uma arena
-                </a>
+                </Link>
               </div>
             </div>
             <div className="relative mx-auto h-[270px] w-full max-w-[430px] sm:h-[330px]">

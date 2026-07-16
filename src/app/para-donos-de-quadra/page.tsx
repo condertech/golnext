@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
@@ -121,12 +122,12 @@ export default function ParaDonosDeQuadra() {
                 dia com pagamento antecipado e acabe com o horário ocioso.
               </p>
               <div className="mt-9 flex flex-wrap gap-3.5">
-                <a
-                  href="mailto:suporte@golnext.com?subject=Quero%20cadastrar%20minha%20arena"
+                <Link
+                  href="/cadastrar-quadra"
                   className="wm rounded-full bg-mint px-8 py-4 text-lg text-deep hover:brightness-95 transition"
                 >
                   Cadastrar minha arena
-                </a>
+                </Link>
                 <a
                   href="#recursos"
                   className="sg rounded-full border border-white/30 px-7 py-4 font-semibold text-white hover:bg-white/10 transition"
@@ -242,12 +243,12 @@ export default function ParaDonosDeQuadra() {
               primeira reserva ainda esta semana.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3.5">
-              <a
-                href="mailto:suporte@golnext.com?subject=Quero%20cadastrar%20minha%20arena"
+              <Link
+                href="/cadastrar-quadra"
                 className="wm rounded-full bg-deep px-8 py-4 text-lg text-white hover:bg-deepest transition"
               >
                 Quero cadastrar minha arena
-              </a>
+              </Link>
               <a
                 href="mailto:suporte@golnext.com?subject=Falar%20com%20um%20consultor"
                 className="sg rounded-full border-2 border-deep px-7 py-4 font-semibold text-deep hover:bg-deep hover:text-white transition"
