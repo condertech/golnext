@@ -32,6 +32,7 @@ export function Navbar() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [navbarVisivel, setNavbarVisivel] = useState(true);
   const ultimaPosicao = useRef(0);
+  const distanciaAcumulada = useRef(0);
   const pathname = usePathname();
   const paginaInicial = pathname === "/";
 
@@ -47,24 +48,46 @@ export function Navbar() {
   useEffect(() => {
     if (!paginaInicial) return;
 
-    ultimaPosicao.current = window.scrollY;
+    ultimaPosicao.current = document.scrollingElement?.scrollTop ?? window.scrollY;
+    distanciaAcumulada.current = 0;
 
     function observarRolagem() {
-      const posicaoAtual = window.scrollY;
+      const posicaoAtual = Math.max(
+        document.scrollingElement?.scrollTop ?? window.scrollY,
+        0,
+      );
+      const diferenca = posicaoAtual - ultimaPosicao.current;
 
       if (posicaoAtual <= 24) {
         setNavbarVisivel(true);
-      } else if (posicaoAtual > ultimaPosicao.current) {
-        setNavbarVisivel(false);
-      } else if (posicaoAtual < ultimaPosicao.current) {
-        setNavbarVisivel(true);
+        distanciaAcumulada.current = 0;
+      } else if (diferenca > 0) {
+        distanciaAcumulada.current = Math.max(0, distanciaAcumulada.current) + diferenca;
+        if (distanciaAcumulada.current >= 12) {
+          setNavbarVisivel(false);
+          distanciaAcumulada.current = 0;
+        }
+      } else if (diferenca < 0) {
+        distanciaAcumulada.current = Math.min(0, distanciaAcumulada.current) + diferenca;
+        if (distanciaAcumulada.current <= -8) {
+          setNavbarVisivel(true);
+          distanciaAcumulada.current = 0;
+        }
       }
 
       ultimaPosicao.current = Math.max(posicaoAtual, 0);
     }
 
     window.addEventListener("scroll", observarRolagem, { passive: true });
-    return () => window.removeEventListener("scroll", observarRolagem);
+    document.addEventListener("scroll", observarRolagem, {
+      passive: true,
+      capture: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", observarRolagem);
+      document.removeEventListener("scroll", observarRolagem, { capture: true });
+    };
   }, [paginaInicial]);
 
   function rotaAtiva(href: string) {
@@ -74,11 +97,13 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-petroleo-900/95 backdrop-blur transition-transform duration-300 ease-out will-change-transform motion-reduce:transition-none ${
-          !paginaInicial || navbarVisivel || menuAberto
-            ? "translate-y-0"
-            : "-translate-y-full"
-        }`}
+        className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-petroleo-900/95 backdrop-blur transition-transform duration-300 ease-out will-change-transform motion-reduce:transition-none"
+        style={{
+          transform:
+            !paginaInicial || navbarVisivel || menuAberto
+              ? "translate3d(0, 0, 0)"
+              : "translate3d(0, -105%, 0)",
+        }}
       >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3.5 sm:px-5 md:px-10 md:py-4">
         {paginaInicial ? (
